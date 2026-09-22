@@ -2,6 +2,12 @@ package edu.towson.cis.cosc442.project1.monopoly;
 
 public class MockTradeDialog implements TradeDialog {
 
+    /**
+     * Creates and returns a predefined TradeDeal object with fixed amount, seller
+     * index, and property name.
+     * 
+     * @return a TradeDeal object representing a preset trade deal
+     */
     public TradeDeal getTradeDeal() {
         TradeDeal deal = new TradeDeal();
         deal.setAmount(200);

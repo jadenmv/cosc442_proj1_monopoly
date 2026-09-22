@@ -4,7 +4,10 @@ import junit.framework.TestCase;
 
 public class RailRoadCellTest extends TestCase {
 	GameMaster gameMaster;
-	
+
+	/**
+	 * Executes setUp.
+	 */
 	protected void setUp() {
 		gameMaster = GameMaster.instance();
 		gameMaster.setGameBoard(new GameBoardRailRoad());
@@ -12,10 +15,12 @@ public class RailRoadCellTest extends TestCase {
 		gameMaster.reset();
 		gameMaster.setGUI(new MockGUI());
 	}
-	
+
+	/**
+	 * Executes testPlayerAction.
+	 */
 	public void testPlayerAction() {
-		RailRoadCell cell =
-			(RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad A");
+		RailRoadCell cell = (RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad A");
 		int cellIndex = gameMaster.getGameBoard().queryCellIndex("Railroad A");
 		gameMaster.movePlayer(0, cellIndex);
 		gameMaster.getPlayer(0).purchase();
@@ -29,7 +34,10 @@ public class RailRoadCellTest extends TestCase {
 				1300 + cell.getRent(),
 				gameMaster.getPlayer(0).getMoney());
 	}
-	
+
+	/**
+	 * Executes testPurchaseRailroad.
+	 */
 	public void testPurchaseRailroad() {
 		assertEquals(0, gameMaster.getPlayer(0).numberOfRR());
 		int cellIndex = gameMaster.getGameBoard().queryCellIndex("Railroad A");
@@ -39,16 +47,17 @@ public class RailRoadCellTest extends TestCase {
 		assertEquals(1, gameMaster.getPlayer(0).numberOfRR());
 	}
 
+	/**
+	 * Executes testRent.
+	 */
 	public void testRent() {
-		RailRoadCell rr1 =
-			(RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad A");
+		RailRoadCell rr1 = (RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad A");
 		int cellIndex1 = gameMaster.getGameBoard().queryCellIndex("Railroad A");
 		gameMaster.movePlayer(0, cellIndex1);
 		gameMaster.getPlayer(0).purchase();
 		assertEquals(25, rr1.getRent());
 
-		RailRoadCell rr2 =
-			(RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad B");
+		RailRoadCell rr2 = (RailRoadCell) gameMaster.getGameBoard().queryCell("Railroad B");
 		int cellIndex2 = gameMaster.getGameBoard().queryCellIndex("Railroad B");
 		gameMaster.movePlayer(0, cellIndex2 - cellIndex1);
 		gameMaster.getPlayer(0).purchase();

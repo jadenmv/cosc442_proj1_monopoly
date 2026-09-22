@@ -2,6 +2,9 @@ package edu.towson.cis.cosc442.project1.monopoly;
 
 
 public class GameBoardCCGainMoney extends GameBoard {
+    /**
+     * Constructs a GameBoardCCGainMoney instance by initializing a game board with properties, cards, and cells related to community chest and chance money gains.
+     */
     public GameBoardCCGainMoney() {
 		super();
 		PropertyCell blue1 = new PropertyCell();

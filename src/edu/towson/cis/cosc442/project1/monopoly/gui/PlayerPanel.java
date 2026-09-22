@@ -18,24 +18,30 @@ import edu.towson.cis.cosc442.project1.monopoly.*;
 public class PlayerPanel extends JPanel {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JButton btnBuyHouse;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private JButton btnBuyHouse;
     private JButton btnDrawCard;
     private JButton btnEndTurn;
     private JButton btnGetOutOfJail;
     private JButton btnPurchaseProperty;
     private JButton btnRollDice;
     private JButton btnTrade;
-    
+
     private JLabel lblMoney;
     private JLabel lblName;
-    
+
     private Player player;
-    
+
     private JTextArea txtProperty;
 
+    /**
+     * Constructs a PlayerPanel GUI component for the specified player with
+     * initialized controls and event handlers.
+     * 
+     * @param player the Player object for whom this panel is created
+     */
     public PlayerPanel(Player player) {
         JPanel pnlAction = new JPanel();
         JPanel pnlInfo = new JPanel();
@@ -96,36 +102,66 @@ public class PlayerPanel extends JPanel {
         setBorder(new BevelBorder(BevelBorder.RAISED));
 
         btnRollDice.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnRollDiceClicked();
             }
         });
 
         btnEndTurn.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnEndTurnClicked();
             }
         });
 
         btnPurchaseProperty.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnPurchasePropertyClicked();
             }
         });
 
         btnBuyHouse.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnBuyHouseClicked();
             }
         });
 
         btnGetOutOfJail.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnGetOutOfJailClicked();
             }
         });
 
         btnDrawCard.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 Card card = GameMaster.instance().btnDrawCardClicked();
                 JOptionPane
@@ -135,12 +171,21 @@ public class PlayerPanel extends JPanel {
         });
 
         btnTrade.addActionListener(new ActionListener() {
+            /**
+             * Handles the trade button click event and triggers the associated game action.
+             * 
+             * @param e the ActionEvent triggered by pressing the trade button
+             */
             public void actionPerformed(ActionEvent e) {
                 GameMaster.instance().btnTradeClicked();
             }
         });
     }
 
+    /**
+     * Updates the panel to display the current player's name, money, and
+     * properties.
+     */
     public void displayInfo() {
         lblName.setText(player.getName());
         lblMoney.setText("$ " + player.getMoney());
@@ -151,59 +196,129 @@ public class PlayerPanel extends JPanel {
         }
         txtProperty.setText(buf.toString());
     }
-    
+
+    /**
+     * Checks if the buy house button is currently enabled.
+     * 
+     * @return true if the buy house button is enabled, false otherwise
+     */
     public boolean isBuyHouseButtonEnabled() {
         return btnBuyHouse.isEnabled();
     }
 
+    /**
+     * Checks if the draw card button is currently enabled.
+     * 
+     * @return true if the draw card button is enabled, false otherwise
+     */
     public boolean isDrawCardButtonEnabled() {
         return btnDrawCard.isEnabled();
     }
 
+    /**
+     * Checks if the end turn button is currently enabled.
+     * 
+     * @return true if the end turn button is enabled, false otherwise
+     */
     public boolean isEndTurnButtonEnabled() {
         return btnEndTurn.isEnabled();
     }
-    
+
+    /**
+     * Checks if the get out of jail button is currently enabled.
+     * 
+     * @return true if the get out of jail button is enabled, false otherwise
+     */
     public boolean isGetOutOfJailButtonEnabled() {
         return btnGetOutOfJail.isEnabled();
     }
-    
+
+    /**
+     * Checks if the purchase property button is currently enabled.
+     * 
+     * @return true if the purchase property button is enabled, false otherwise
+     */
     public boolean isPurchasePropertyButtonEnabled() {
         return btnPurchaseProperty.isEnabled();
     }
-    
+
+    /**
+     * Checks if the roll dice button is currently enabled.
+     * 
+     * @return true if the roll dice button is enabled, false otherwise
+     */
     public boolean isRollDiceButtonEnabled() {
         return btnRollDice.isEnabled();
     }
 
+    /**
+     * Checks if the trade button is currently enabled.
+     * 
+     * @return true if the trade button is enabled, false otherwise
+     */
     public boolean isTradeButtonEnabled() {
         return btnTrade.isEnabled();
     }
 
+    /**
+     * Enables or disables the buy house button.
+     * 
+     * @param b true to enable the button, false to disable
+     */
     public void setBuyHouseEnabled(boolean b) {
         btnBuyHouse.setEnabled(b);
     }
 
+    /**
+     * Enables or disables the draw card button.
+     * 
+     * @param b true to enable the button, false to disable
+     */
     public void setDrawCardEnabled(boolean b) {
         btnDrawCard.setEnabled(b);
     }
 
+    /**
+     * Enables or disables the end turn button.
+     * 
+     * @param enabled true to enable the button, false to disable
+     */
     public void setEndTurnEnabled(boolean enabled) {
         btnEndTurn.setEnabled(enabled);
     }
 
+    /**
+     * Enables or disables the get out of jail button.
+     * 
+     * @param b true to enable the button, false to disable
+     */
     public void setGetOutOfJailEnabled(boolean b) {
         btnGetOutOfJail.setEnabled(b);
     }
 
+    /**
+     * Enables or disables the purchase property button.
+     * 
+     * @param enabled true to enable the button, false to disable
+     */
     public void setPurchasePropertyEnabled(boolean enabled) {
         btnPurchaseProperty.setEnabled(enabled);
     }
 
+    /**
+     * Enables or disables the roll dice button.
+     * 
+     * @param enabled true to enable the button, false to disable
+     */
     public void setRollDiceEnabled(boolean enabled) {
         btnRollDice.setEnabled(enabled);
     }
 
+    /**
+     * Enables or disables the trade button.
+     * 
+     * @param b true to enable the button, false to disable
+     */
     public void setTradeEnabled(boolean b) {
         btnTrade.setEnabled(b);
     }

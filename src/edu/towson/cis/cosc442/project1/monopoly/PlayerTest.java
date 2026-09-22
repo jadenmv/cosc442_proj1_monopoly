@@ -6,6 +6,10 @@ public class PlayerTest extends TestCase {
 
 	GameMaster gameMaster;
 	
+	/**
+	 * Initializes the game master and sets up a simple game board with mock GUI for testing before each test.
+	 * @throws Exception If initialization of the game master or setup fails.
+	 */
 	protected void setUp() throws Exception {
 		gameMaster = GameMaster.instance();
 		gameMaster.setGameBoard(new SimpleGameBoard());
@@ -14,6 +18,9 @@ public class PlayerTest extends TestCase {
         gameMaster.reset();
 	}
 	
+	/**
+	 * Tests that a player can purchase a property and that ownership and money are updated accordingly.
+	 */
 	public void testPurchaseProperty() {
 		gameMaster.setNumberOfPlayers(1);
 		gameMaster.movePlayer(0, 3);
@@ -26,6 +33,9 @@ public class PlayerTest extends TestCase {
 		assertSame(player, cell.getTheOwner());
 	}
 
+	/**
+	 * Verifies that multiple new players start at the same initial 'Go' cell on the game board.
+	 */
 	public void testSameGoCell() {
 		GameBoard gameboard = gameMaster.getGameBoard();
 		Player player1 = new Player();
@@ -35,6 +45,9 @@ public class PlayerTest extends TestCase {
 		assertSame(go, player2.getPosition());
 	}
 	
+	/**
+	 * Tests the rent payment process between two players, ensuring bankrupt status and money balances are handled correctly.
+	 */
 	public void testPayRentTo() {
 		gameMaster.setNumberOfPlayers(2);
 		gameMaster.movePlayer(0,4);
@@ -46,6 +59,9 @@ public class PlayerTest extends TestCase {
 		assertEquals(2800, gameMaster.getPlayer(0).getMoney());
 	}
 	
+	/**
+	 * Tests exchanging properties between the current player and another player, verifying property count after exchange.
+	 */
 	public void testExchangeProperty() {
 		gameMaster.setNumberOfPlayers(2);
 		gameMaster.movePlayer(0,3);
@@ -55,6 +71,9 @@ public class PlayerTest extends TestCase {
 		assertEquals(1,gameMaster.getCurrentPlayer().getPropertyNumber());
 	}
 	
+	/**
+	 * Tests the purchase of houses by a player on monopolized properties, validating monopolies and updated player funds.
+	 */
 	public void testPurchaseHouse() {
 		gameMaster.setNumberOfPlayers(1);
 		gameMaster.startGame();
@@ -72,6 +91,9 @@ public class PlayerTest extends TestCase {
 		assertEquals(880, gameMaster.getCurrentPlayer().getMoney());
 	}
 	
+	/**
+	 * Tests resetting a player's properties to ensure all properties are cleared properly.
+	 */
 	public void testResetProperty() {
 		gameMaster.setNumberOfPlayers(1);
 		gameMaster.movePlayer(0,1);

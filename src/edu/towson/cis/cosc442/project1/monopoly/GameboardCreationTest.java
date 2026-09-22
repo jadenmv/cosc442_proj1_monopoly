@@ -6,8 +6,12 @@ import java.util.List;
 import junit.framework.TestCase;
 import edu.towson.cis.cosc442.project1.monopoly.gui.GameBoardUtil;
 
-public class GameboardCreationTest extends TestCase{
-	
+public class GameboardCreationTest extends TestCase {
+
+	/**
+	 * Tests that the cells on a SimpleGameBoard are correctly added and ordered on
+	 * each side of the board.
+	 */
 	public void testCellAddOrder() {
 		GameBoard board = new SimpleGameBoard();
 		List<?> northCells = GameBoardUtil.getNorthCells(board);
@@ -25,7 +29,11 @@ public class GameboardCreationTest extends TestCase{
 		List<?> eastCells = GameBoardUtil.getEastCells(board);
 		assertEquals(0, eastCells.size());
 	}
-	
+
+	/**
+	 * Tests the ordering and presence of cells on all sides of a GameBoard14
+	 * instance to verify correct cell addition.
+	 */
 	public void testCellAddOrder14() {
 		GameBoard board = new GameBoard14();
 		List<?> northCells = GameBoardUtil.getNorthCells(board);
@@ -51,7 +59,11 @@ public class GameboardCreationTest extends TestCase{
 		assertSame(board.queryCell("Yellow 1"), eastCells.get(0));
 		assertSame(board.queryCell("Yellow 2"), eastCells.get(1));
 	}
-	
+
+	/**
+	 * Verifies that the game board dimensions are correctly calculated for
+	 * specified numbers of cells.
+	 */
 	public void testGameboardLayout() {
 		assertEquals(
 				new Dimension(1, 0), GameBoardUtil.calculateDimension(6));

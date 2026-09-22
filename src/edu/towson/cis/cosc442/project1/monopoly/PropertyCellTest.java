@@ -6,7 +6,10 @@ import junit.framework.TestCase;
 public class PropertyCellTest extends TestCase {
 
 	GameMaster gameMaster;
-	
+
+	/**
+	 * Executes setUp.
+	 */
 	protected void setUp() {
 		gameMaster = GameMaster.instance();
 		gameMaster.setGameBoard(new SimpleGameBoard());
@@ -14,10 +17,12 @@ public class PropertyCellTest extends TestCase {
 		gameMaster.reset();
 		gameMaster.setGUI(new MockGUI());
 	}
-	
+
+	/**
+	 * Executes testPlayerAction.
+	 */
 	public void testPlayerAction() {
-		PropertyCell cell =
-			(PropertyCell) gameMaster.getGameBoard().queryCell("Blue 3");
+		PropertyCell cell = (PropertyCell) gameMaster.getGameBoard().queryCell("Blue 3");
 		int cellIndex = gameMaster.getGameBoard().queryCellIndex("Blue 3");
 		gameMaster.movePlayer(0, cellIndex);
 		gameMaster.getPlayer(0).purchase();
